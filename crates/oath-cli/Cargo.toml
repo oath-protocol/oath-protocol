@@ -1,0 +1,21 @@
+[package]
+name = "oath-cli"
+description = "CLI tool for the Oath Protocol — sign and verify human intent attestations"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[[bin]]
+name = "oath"
+path = "src/main.rs"
+
+[dependencies]
+oathkit-core = { path = "../oathkit-core" }
+clap = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+anyhow = { workspace = true }
+chrono = { workspace = true }
+hex = { workspace = true }

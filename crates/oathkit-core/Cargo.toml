@@ -1,0 +1,28 @@
+[package]
+name = "oathkit-core"
+description = "Core library for the Oath Protocol — cryptographically verifiable human intent attestation"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+keywords.workspace = true
+categories.workspace = true
+readme = "../../README.md"
+
+[dependencies]
+ed25519-dalek = { workspace = true }
+sha2 = { workspace = true }
+zeroize = { workspace = true }
+base64ct = { workspace = true }
+hex = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+ciborium = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+rand = { workspace = true }
+rand_core = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
