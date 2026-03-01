@@ -1,8 +1,8 @@
 
 # Oath Protocol Specification
 
-**Version:** 1.0.0-draft
-**Status:** Draft
+**Version:** 1.0.0
+**Status:** Final
 **Authors:** Oath Protocol Contributors
 **Created:** 2026-02-25
 **Repository:** github.com/oath-protocol/oath-protocol
@@ -932,28 +932,33 @@ All values are in the formats defined in this specification.
 action_class:  "database:delete_records:test_scope"
 context:       "Authorized cleanup of test database records"
 timestamp_ms:  1740384723000
+id:            00000000-0000-4000-8000-000000000001
 keypair seed:  0000000000000000000000000000000000000000000000000000000000000001
+```
+
+**Derived public key (Ed25519, base64url no padding):**
+```
+TLWr9q15-_WrvMr8wmnYXNJlHtS4hbWGnyQa7fCluik=
 ```
 
 **Expected context_hash (SHA-256, base64url no padding):**
 ```
-TBD — to be computed by reference implementation and locked in v1.0.0
+zNVumuIL02rlvxkNNh6386UjVMK3hHwRgHZ8hOBB98Y=
 ```
 
 **Expected canonical serialization:**
 ```
-TBD — to be computed by reference implementation and locked in v1.0.0
+{"id":"00000000-0000-4000-8000-000000000001","protocol_version":"oath/1.0","action_class":"database:delete_records:test_scope","context_hash":"zNVumuIL02rlvxkNNh6386UjVMK3hHwRgHZ8hOBB98Y=","timestamp_ms":1740384723000,"public_key":"TLWr9q15-_WrvMr8wmnYXNJlHtS4hbWGnyQa7fCluik="}
 ```
 
-**Expected signature:**
+**Expected signature (Ed25519, base64url no padding):**
 ```
-TBD — to be computed by reference implementation and locked in v1.0.0
+xTXoHNfeRthzNdTiKTy10OnYtFuYU1SLULaJE_jyAUNEqvLH925UJkp77_Txj1DxbKqCxeWPiHcwK9xn-dU8AQ==
 ```
 
-> **Note:** Test vectors marked TBD will be finalized and locked when the
-> reference implementation (oathkit-core) produces its first passing test
-> suite. At that point this section will be updated and the spec version
-> will move from 1.0.0-draft to 1.0.0.
+> These values were computed by the oathkit-core reference implementation
+> and locked at spec version 1.0.0. All conforming implementations MUST
+> produce identical output for identical inputs.
 
 ### 18.2 Vector 2 — Expired Attestation
 
@@ -1016,7 +1021,7 @@ ECDSA on other curves can exhibit.
 
 ---
 
-*Oath Protocol Specification v1.0.0-draft*
+*Oath Protocol Specification v1.0.0*
 *February 2026*
 *This document is released under CC0 1.0 Universal (Public Domain).*
 *The reference implementation (OathKit) is released under the MIT License.*
