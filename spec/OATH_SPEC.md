@@ -710,15 +710,22 @@ The public key is derived deterministically from the private key.
 
 ### 12.2 Key Storage
 
-**Private key at rest:** Implementations MUST store the private key encrypted.
-The preferred method is the operating system's secure keychain:
+**Private key at rest:** Implementations MUST protect the private key from
+unauthorized access. The minimum acceptable protection is an OS-permission-
+restricted file (Unix mode 0600 or equivalent) readable only by the owning
+user. This is the same security model as OpenSSH's default key storage.
+
+The RECOMMENDED approach is the operating system's secure keychain:
 - macOS: Keychain Services
-- Linux: Secret Service API (via libsecret) or encrypted file
+- Linux: Secret Service API (via libsecret)
 - Windows: Windows Credential Manager
 
-If no system keychain is available, implementations MUST encrypt the private
-key file using AES-256-GCM with a key derived from a user-provided passphrase
-using Argon2id (RFC 9106).
+Implementations MAY additionally support passphrase-protected key files
+using AES-256-GCM with a key derived from a user-provided passphrase via
+Argon2id (RFC 9106).
+
+The reference implementation (oathkit-core v0.1) uses the OS-permission-
+restricted file model. Keychain integration is planned for a future version.
 
 **Private key in memory:** The private key MUST be loaded into memory only
 for the duration of a signing operation. It MUST be zeroed from memory
